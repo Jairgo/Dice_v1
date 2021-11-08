@@ -11,27 +11,26 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     Button btnGirar, btnDice1, btnDice2;
-    Random rand;
-    int a,b;
+    private Dice dado1, dado2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dado1 = new Dice();
+        dado2 = new Dice();
+
         btnGirar = findViewById(R.id.btnGirar);
         btnDice1 = findViewById(R.id.dice_1);
         btnDice2 = findViewById(R.id.dice_2);
-        rand = new Random();
+
 
         btnGirar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                a = rand.nextInt(6) + 1;
-                b = rand.nextInt(6) + 1;
-
-                btnDice1.setText("" + a);
-                btnDice2.setText("" + b);
+                btnDice1.setText("" + dado1.girarDado());
+                btnDice2.setText("" + dado2.girarDado());
             }
         });
     }
